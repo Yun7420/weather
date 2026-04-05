@@ -139,7 +139,7 @@ export function ForecastSidebar({
           : [];
 
   return (
-    <aside className="flex min-h-0 min-w-0 w-full flex-[2] basis-0 flex-col gap-3 rounded-2xl border border-white/12 bg-white/[0.07] p-4 shadow-xl shadow-black/30 backdrop-blur-2xl sm:gap-4 sm:p-5 lg:w-[min(100%,28rem)] lg:max-w-[30rem] lg:shrink-0 lg:flex-none lg:basis-auto lg:self-stretch xl:w-[30rem]">
+    <aside className="flex w-full shrink-0 flex-col gap-3 rounded-2xl border border-white/12 bg-white/[0.07] p-4 shadow-xl shadow-black/30 backdrop-blur-2xl sm:gap-4 sm:p-5 lg:min-h-0 lg:w-[min(100%,28rem)] lg:max-w-[30rem] lg:shrink-0 lg:flex-none lg:basis-auto lg:self-stretch xl:w-[30rem]">
       {hasWind && (
         <div className="shrink-0 rounded-xl border border-white/[0.08] bg-black/15 px-3 py-2.5 backdrop-blur-sm">
           <p className="text-center text-sm leading-snug text-white/70 sm:text-left">
@@ -172,7 +172,7 @@ export function ForecastSidebar({
         </div>
       </div>
 
-      <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain pr-1 [scrollbar-gutter:stable] [scrollbar-width:thin]">
+      <div className="max-lg:flex-none max-lg:overflow-visible lg:min-h-0 lg:flex-1 lg:overflow-y-auto lg:overscroll-y-contain lg:pr-1 lg:[scrollbar-gutter:stable] lg:[scrollbar-width:thin]">
         <DailyList days={listDays} todayIso={daily[0]?.date} />
       </div>
     </aside>

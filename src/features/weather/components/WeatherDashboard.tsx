@@ -16,7 +16,7 @@ export function WeatherDashboard() {
 
   if (isPending) {
     return (
-      <div className="flex h-full min-h-0 w-full flex-1 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-sm text-white/50 backdrop-blur-xl">
+      <div className="flex min-h-[50vh] w-full items-center justify-center rounded-2xl border border-white/10 bg-white/5 py-16 text-sm text-white/50 backdrop-blur-xl lg:h-full lg:min-h-0 lg:flex-1">
         불러오는 중…
       </div>
     );
@@ -24,7 +24,7 @@ export function WeatherDashboard() {
 
   if (isError || !data) {
     return (
-      <div className="flex h-full min-h-0 w-full flex-1 items-center justify-center overflow-y-auto rounded-2xl border border-rose-500/25 bg-rose-950/20 p-6 text-center text-sm text-rose-100 backdrop-blur-xl sm:p-10">
+      <div className="flex min-h-[50vh] w-full items-center justify-center overflow-y-auto rounded-2xl border border-rose-500/25 bg-rose-950/20 p-6 text-center text-sm text-rose-100 backdrop-blur-xl sm:p-10 lg:h-full lg:min-h-0 lg:flex-1">
         날씨 정보를 불러오지 못했습니다.
         <button
           type="button"
@@ -56,11 +56,11 @@ export function WeatherDashboard() {
         aria-hidden
         className="pointer-events-none fixed inset-0 z-0 bg-gradient-to-br from-slate-950/88 via-slate-900/72 to-slate-950/90"
       />
-      <div className="relative z-10 flex h-full min-h-0 w-full flex-1 flex-col gap-1">
+      <div className="relative z-10 flex w-full flex-col gap-1 lg:h-full lg:min-h-0 lg:flex-1">
         {isFetching && (
           <p className="shrink-0 text-center text-[10px] leading-tight text-white/35">갱신 중</p>
         )}
-        <div className="flex min-h-0 min-w-0 w-full flex-1 flex-col gap-3 lg:flex-row lg:items-stretch lg:gap-4">
+        <div className="flex min-w-0 w-full flex-col gap-3 lg:min-h-0 lg:flex-1 lg:flex-row lg:items-stretch lg:gap-4">
           <MainWeatherPanel
             placeName={place.name}
             hourly={hourly}
