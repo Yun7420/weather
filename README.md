@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Weather Atlas
 
-## Getting Started
+날씨 대시보드 웹 앱입니다. 위치 검색·지오코딩과 예보 데이터를 바탕으로 한 화면을 제공합니다.
 
-First, run the development server:
+---
+
+## 기술 스택
+
+| 구분 | 사용 |
+|------|------|
+| 프레임워크 | [Next.js](https://nextjs.org) 16 (App Router) |
+| UI | [React](https://react.dev) 19, [Tailwind CSS](https://tailwindcss.com) 4 |
+| 데이터·상태 | [TanStack Query](https://tanstack.com/query), [Zustand](https://zustand-demo.pmnd.rs/) |
+| 언어 | [TypeScript](https://www.typescriptlang.org/) |
+| 패키지 매니저 | [pnpm](https://pnpm.io) 10 |
+
+날씨·지오코딩 API는 `src/features` 아래 모듈에서 다룹니다.
+
+---
+
+## 시작하기
+
+### 필요 환경
+
+- **Node.js** 20 이상 권장  
+- **pnpm**: 전역 설치 없이도 `npx` 또는 아래 배치 파일로 실행 가능
+
+### 의존성 설치
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+전역에 `pnpm`이 없다면:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npx --yes pnpm@10.33.0 install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Windows**에서는 프로젝트 루트의 `install.bat`을 실행해도 됩니다 (`npx`로 pnpm을 호출).
 
-## Learn More
+> 자동화 환경(CI 등)에서 `pnpm install`이 TTY 관련으로 멈출 때는 `CI=true`를 설정한 뒤 다시 실행하세요.
 
-To learn more about Next.js, take a look at the following resources:
+### 개발 서버
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+또는:
 
-## Deploy on Vercel
+```bash
+npx --yes pnpm@10.33.0 dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Windows**: `dev.bat` 실행.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+브라우저에서 [http://localhost:3000](http://localhost:3000) 을 열면 됩니다.
+
+### 기타 스크립트
+
+| 명령 | 설명 |
+|------|------|
+| `pnpm dev` | 개발 서버 (`next dev`) |
+| `pnpm build` | 프로덕션 빌드 |
+| `pnpm start` | 빌드 결과 실행 (`next start`) |
+| `pnpm lint` | ESLint |
+
+---
+
+## 프로젝트 구조 (요약)
+
+```
+src/
+├── app/                 # 라우트·레이아웃
+├── features/
+│   ├── weather/         # 예보 UI·API·훅
+│   ├── location/        # 위치 검색·스토어
+│   └── shell/           # 페이지 조합
+└── shared/              # 공용 프로바이더·유틸
+```
+
+---
+
+## pnpm을 쉘에서 쓰고 싶다면
+
+```bash
+corepack enable
+corepack prepare pnpm@10.33.0 --activate
+```
+
+이후 일반적으로 `pnpm install`, `pnpm dev` 를 사용할 수 있습니다.
+
+---
+
+## 더 알아보기
+
+- [Next.js 문서](https://nextjs.org/docs)
+- [Next.js 배포 가이드](https://nextjs.org/docs/app/building-your-application/deploying)
